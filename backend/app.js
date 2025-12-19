@@ -19,7 +19,26 @@ const __dirname = path.dirname(__filename);
 const clientBuildPath = path.join(__dirname, "../frontend/dist");
 
 // Middleware
-app.use(cors({ origin: ["http://localhost:5173"], credentials: true }));
+const allowedOrigins = process.env.FRONTEND_URL
+  ? process.env.FRONTEND_URL.split(",")
+  : [];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // allow server-to-server / Postman / cron
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // Routes
