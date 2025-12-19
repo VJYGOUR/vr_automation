@@ -203,6 +203,10 @@ Make sure MongoDB is running locally.
 
 ---
 
+## 📸 Screenshot
+
+![data](screenshots/database.png)
+
 ## ✅ Summary
 
 This project demonstrates:
