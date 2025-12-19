@@ -205,7 +205,7 @@ Make sure MongoDB is running locally.
 
 ## 📸 Screenshot
 
-![data](screenshots/database.png)
+![data](screenshot/database.png)
 
 ## ✅ Summary
 
